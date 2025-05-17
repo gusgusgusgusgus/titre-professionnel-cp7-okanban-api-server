@@ -1,4 +1,4 @@
-import { sequelize } from "./sequelizeClient.js";
+import { sequelize } from "../sequelizeClient.js";
 import { Model, DataTypes } from "sequelize";
 
 export class Label extends Model {}

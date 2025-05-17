@@ -1,4 +1,4 @@
-import { List } from "../models/List";
+import { List } from "../models/index.js";
 import Joi from "joi";
 
 // Fonction pour aller chercher toute les listes présentes en BDD

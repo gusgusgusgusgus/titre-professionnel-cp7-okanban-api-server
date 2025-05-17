@@ -1,7 +1,7 @@
 import { Task } from "./task.js";
 import { List } from "./List.js";
 import { Label } from "./Label.js";
-import { sequelize } from "./sequelizeClient.js";
+import { sequelize } from "../sequelizeClient.js";
 
 // Association List- Task : One-to-Many
 List.hasMany(Task, {
