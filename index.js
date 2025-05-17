@@ -13,7 +13,7 @@ import { bodySanitizer } from "./src/bodySanitizer.js";
 const app = express();
 
 // Utilisation de CORS, avec autorisation de requêtes cross-origins
-app.use(cors({ origin: "*" }));
+app.use(cors());
 
 // Ajout des body parsers
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +28,7 @@ app.use(`/api/v${process.env.VERSION}`, apiRouter);
 // Setup d'une "homepage"
 app.get("/", (req, res) => {
 	res.json({
-		hello: "Bienvenue sur l'API to the oKanban !",
+		hello: "Bienvenue sur l'API de oKanban !",
 	});
 });
 
