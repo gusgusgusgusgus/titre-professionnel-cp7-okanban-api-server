@@ -1,2 +1,2 @@
-export { Task, List, Label, Categorise } from "./associations.js";
+export { Task, List, Label } from "./associations.js";
 

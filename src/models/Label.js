@@ -1,13 +1,17 @@
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../sequelizeClient.js";
-import { Model, DataTypes } from "sequelize";
 
 export class Label extends Model {}
 
 Label.init({
+  id_label: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.TEXT,
     allowNull: false,
-    unique: true
   },
   color: {
     // Je vais utiliser des codes hexadecimaux pour les couleurs, donc 7 caractères max

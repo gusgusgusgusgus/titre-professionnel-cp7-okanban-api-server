@@ -1,34 +1,24 @@
-import { Task } from "./task.js";
 import { List } from "./List.js";
+import { Task } from "./Task.js";
 import { Label } from "./Label.js";
-import { sequelize } from "../sequelizeClient.js";
 
 // Association List- Task : One-to-Many
-List.hasMany(Task, {
-  as: "tasks", 
-  foreignKey: "list_id"
-});
-
-Task.belongsTo(List, {
-  as: "list",
-  foreignKey: "list_id"
-});
+List.hasMany(Task, { as: "tasks", foreignKey: "id_list" });
+Task.belongsTo(List, { as: "list", foreignKey: "id_list" });
 
 // Association Task - Label : Many-to-Many
-export const Categorise = sequelize.define("categorise", {}, { tableName: "categorise" });
-
 Task.belongsToMany(Label, {
+  through: "categorise",
   as: "labels",
-  through: Categorise,
-  foreignKey: "task_id",
-  otherKey: "label_id"
+  foreignKey: "id_task",
+  otherKey: "id_label"
 });
 
 Label.belongsToMany(Task, {
+  through: "categorise",
   as: "tasks",
-  through: Categorise,
-  foreignKey: "label_id",
-  otherKey: "task_id"
+  foreignKey: "id_label",
+  otherKey: "id_task"
 });
 
-export { Task, List, Label };
+export { List, Task, Label };
