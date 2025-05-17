@@ -5,7 +5,10 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"dev": "node --watch index.js"
+		"dev": "node --watch index.js",
+		"db:create": "node ./src/data/createTables.js",
+		"db:seed": "node ./src/data/seedTables.js",
+		"db:reset": "pnpm db:create && pnpm db:seed"
 	},
 	"keywords": [],
 	"author": "Augustin Seminel",
