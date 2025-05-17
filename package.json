@@ -1,0 +1,22 @@
+{
+	"name": "titre-professionnel-cp7-okanban-api-server",
+	"version": "1.0.0",
+	"description": "Passage du Titre Professionnel 26 mai 2025 - Exercice choisi pour la CP7",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "node --watch index.js"
+	},
+	"keywords": [],
+	"author": "Augustin Seminel",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.5.0",
+		"express": "^4.21.2",
+		"joi": "^17.13.3",
+		"pg": "^8.16.0",
+		"sanitize-html": "^2.17.0",
+		"sequelize": "^6.37.7"
+	}
+}
