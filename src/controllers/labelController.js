@@ -26,7 +26,7 @@ export async function getOneLabel(req, res) {
 export async function createLabel(req, res) {
 	const createLabelSchema = Joi.object({
 		name: Joi.string().min(1).required(),
-		color: Joi.string(7),
+		color: Joi.string().length(7),
 	});
 	const { error } = createLabelSchema.validate(req.body);
 	if (error) {

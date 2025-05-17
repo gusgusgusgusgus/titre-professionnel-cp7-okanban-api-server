@@ -29,14 +29,14 @@ export async function getOneTask(req, res) {
 // Fonction pour aller créer une tâche en BDD
 export async function createTask(req, res) {
 	const createTaskSchema = Joi.object({
-		title: Joi.string().min(1).required(),
+		name: Joi.string().min(1).required(),
 		id_list: Joi.number().integer().required(),
-		color: Joi.string(7),
+		color: Joi.string().length(7),
 		position: Joi.number().integer().min(1),
 	})
     .min(1)
 		.message(
-			"Missing information, please provide all the information needed (title, color and corresponding List)",
+			"Missing information, please provide all the information needed (name, color and corresponding List)",
 		);;
 
 	const { error } = createTaskSchema.validate(req.body);
@@ -45,7 +45,7 @@ export async function createTask(req, res) {
 	}
 
 	const task = await Task.create({
-		title: req.body.title,
+		name: req.body.name,
 		id_list: Number.parseInt(req.body.id_list),
 		position: req.body.position || 1, 
 		color: req.body.color || null, 
@@ -61,14 +61,14 @@ export async function updateTask(req, res) {
 	const taskId = Number.parseInt(req.params.id);
 
     const updateTaskSchema = Joi.object({
-		title: Joi.string().min(1).required(),
+		name: Joi.string().min(1).required(),
 		id_list: Joi.number().integer().required(),
 		color: Joi.string(7),
 		position: Joi.number().integer().min(1),
 	})
 		.min(1)
 		.message(
-			"Missing information, please provide all the information needed (title, color, position and corresponding List)",
+			"Missing information, please provide all the information needed (name, color, position and corresponding List)",
 		);
 
 	const { error } = updateTaskSchema.validate(req.body);
@@ -91,7 +91,7 @@ export async function updateTask(req, res) {
 	}
 
 	const updatedTask = await task.update({
-		title: req.body.title || task.title,
+		name: req.body.name || task.name,
 		position: req.body.position || task.position,
 		color: req.body.color || task.color,
 		id_list: req.body.id_list || task.id_list,
